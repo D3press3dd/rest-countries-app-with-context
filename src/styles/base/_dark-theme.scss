@@ -1,0 +1,85 @@
+.dark-theme {
+  background-color: $dark-mode-background;
+
+  .navbar {
+    color: $dark-mode-text;
+    box-shadow: $dark-shadow;
+  }
+
+  .navbar__title {
+    &:hover {
+      text-shadow: 0px 4px 3px rgba(255, 255, 255, 0.4),
+        0px 8px 13px rgba(255, 255, 255, 0.1),
+        0px 18px 23px rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .navbar__search {
+    color: $dark-mode-text;
+  }
+  .navbar__search-input {
+    background-color: $dark-mode-elements;
+    color: $dark-mode-text;
+    box-shadow: $dark-shadow;
+
+    &:focus-visible {
+      box-shadow: $dark-shadow, $dark-shadow;
+    }
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+
+  .navbar__select {
+    background-color: $dark-mode-elements;
+    color: $dark-mode-text;
+    border: none;
+    box-shadow: $dark-shadow;
+    &:focus-visible {
+      box-shadow: $dark-shadow, $dark-shadow;
+    }
+  }
+
+  .country-card__container {
+    background-color: $dark-mode-elements;
+    box-shadow: $dark-shadow;
+    p {
+      color: $dark-mode-text;
+    }
+
+    span {
+      font-weight: 300;
+    }
+  }
+
+  .back-btn__link {
+    box-shadow: $dark-shadow;
+    &:link,
+    &:visited {
+      color: $dark-mode-text;
+    }
+
+    &:hover,
+    &:active {
+      color: lighten($color: $light-mode-text, $amount: 60);
+      box-shadow: $dark-shadow, $dark-shadow;
+    }
+  }
+
+  .country__data {
+    color: $dark-mode-text;
+  }
+
+  .country__borders-text span {
+    box-shadow: $dark-shadow;
+
+    &:hover {
+      box-shadow: $dark-shadow, $dark-shadow;
+    }
+  }
+
+  .sk-chase-dot:before {
+    background-color: #fff;
+  }
+}

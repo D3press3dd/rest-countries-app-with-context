@@ -1,0 +1,163 @@
+.back-btn {
+  display: flex;
+  margin-left: 4rem;
+  position: relative;
+  margin: 4rem;
+
+  img {
+    max-width: 1.4rem;
+    position: absolute;
+    top: 1rem;
+    left: 1.6rem;
+  }
+}
+
+.back-btn__link {
+  box-shadow: $light-shadow;
+  padding: 0.8rem 4rem;
+  text-decoration: none;
+  font-weight: 800;
+  transition: box-shadow, 0.3s ease-in-out;
+
+  &:link,
+  &:visited {
+    color: $light-mode-text;
+  }
+
+  &:hover,
+  &:active {
+    color: lighten($color: $light-mode-text, $amount: 25);
+    box-shadow: $light-shadow, $light-shadow, $light-shadow;
+  }
+}
+
+.country__container {
+  display: grid;
+  gap: 8rem;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0 4rem;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.country__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.country__bothsides-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.country__left-data {
+  h1 {
+    font-weight: 800;
+  }
+
+  p {
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+  }
+
+  span {
+    font-weight: 300;
+  }
+}
+
+.country__right-data,
+.country__borders {
+  p {
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+  }
+
+  span {
+    font-weight: 300;
+  }
+}
+
+.country__borders {
+  display: flex;
+}
+
+.country__borders-text {
+  display: flex;
+  flex-wrap: wrap;
+  span {
+    box-shadow: $light-shadow, $light-shadow;
+    margin: 0 1rem;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    transition: box-shadow, 0.5s ease;
+
+    &:hover {
+      box-shadow: $light-shadow, $light-shadow, $light-shadow, $light-shadow;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .country__container {
+    gap: 4rem;
+  }
+  .country__borders-text {
+    span {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+@media (max-width: 864px) {
+  .country__container {
+    gap: 2rem;
+  }
+
+  .country__borders {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+  .country__borders-text {
+    span {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .country__bothsides-data {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .country__container {
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+  }
+  .country__bothsides-data {
+    flex-direction: column;
+  }
+
+  .country__left-data {
+    margin-bottom: 2rem;
+  }
+
+  .country__borders {
+    align-items: normal;
+  }
+  .country__borders-text span {
+    margin: 0;
+  }
+
+  .back-btn {
+    margin: 2rem;
+  }
+}
