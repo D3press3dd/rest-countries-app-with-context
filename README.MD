@@ -17,7 +17,7 @@ This is a solution to the [REST Countries API with color theme switcher](https:/
 
 ### Links
 
-- Solution URL: [Solution](https://www.frontendmentor.io/solutions/advice-generator-with-react-completely-responsive-wd5Mow7tp)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/rest-countries-app-with-theme-switcher-Drd8ji46I))
 - Live Site URL: [Live Preview](https://rest-countries-app-ar.netlify.app/#/)
 
 ### Built with
