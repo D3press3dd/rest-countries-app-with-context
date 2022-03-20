@@ -24,7 +24,7 @@ const CountryCard = ({ country, index }) => {
       }}
       transition={{
         duration: 0.3,
-        delay: index * 0.1,
+        delay: index * 0.03,
       }}
     >
       <div className="country-card__image">

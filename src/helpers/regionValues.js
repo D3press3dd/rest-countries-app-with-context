@@ -23,10 +23,6 @@ export const region = [
     name: "Oceania",
     value: "Oceania",
   },
-  {
-    name: "Antarctic",
-    value: "Antarctic",
-  },
 ];
 
 // Search by Region: Africa, Americas, Asia, Europe, Oceania. The search can be using the full region’s name or just part of it

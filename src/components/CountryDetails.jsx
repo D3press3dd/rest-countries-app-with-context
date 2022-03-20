@@ -58,10 +58,7 @@ const CountryDetails = () => {
                 <p>
                   Native Name:
                   <span>
-                    {
-                      Object.values(singleCountry[0].name.nativeName)[0]
-                        .official
-                    }
+                    {Object.values(singleCountry[0]?.name?.nativeName)[0]}
                   </span>
                 </p>
                 <p>

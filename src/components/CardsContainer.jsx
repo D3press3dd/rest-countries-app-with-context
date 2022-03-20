@@ -24,7 +24,9 @@ const CardsContainer = () => {
             className="navbar__search-input"
             type="text"
             placeholder="Search for a country..."
-            onChange={e => setCountriesFiltered(filterByName(e.target.value))}
+            onChange={e =>
+              setCountriesFiltered(filterByName(e.target.value.toLowerCase()))
+            }
           />
           <img
             className="navbar__search-img"
