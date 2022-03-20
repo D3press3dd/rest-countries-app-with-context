@@ -13,7 +13,7 @@ This is a solution to the [REST Countries API with color theme switcher](https:/
 
 ### Screenshot
 
-![](./screenshot.png)
+![](./src/screenshot.png)
 
 ### Links
 
