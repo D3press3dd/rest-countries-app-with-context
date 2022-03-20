@@ -47,7 +47,7 @@ const CardsContainer = () => {
         </motion.div>
         <motion.select
           defaultValue={"selected"}
-          name="select"
+          name="countries region"
           className="navbar__select"
           initial={{
             translateX: 2000,
