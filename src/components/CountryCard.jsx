@@ -23,8 +23,10 @@ const CountryCard = ({ country, index }) => {
         rotate: 0,
       }}
       transition={{
-        duration: 0.3,
-        delay: index * 0.03,
+        delay: index * 0.01,
+      }}
+      whileHover={{
+        translateY: -10,
       }}
     >
       <div className="country-card__image">

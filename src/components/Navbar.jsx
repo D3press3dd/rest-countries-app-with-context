@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MoonIcon from "../img/moon-outline.svg";
 import SunIcon from "../img/sunny-outline.svg";
+import { motion } from "framer-motion";
 
 import { useNavigate } from "react-router-dom";
 
@@ -29,7 +30,17 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="navbar">
+      <motion.header
+        className="navbar"
+        initial={{
+          translateY: -2000,
+          opacity: 0,
+        }}
+        animate={{
+          translateY: 0,
+          opacity: 1,
+        }}
+      >
         <h1 onClick={handleHome} className="navbar__title">
           Where in the world?
         </h1>
@@ -42,7 +53,7 @@ const Navbar = () => {
           />
           <h2>Dark Mode</h2>
         </div>
-      </header>
+      </motion.header>
     </>
   );
 };

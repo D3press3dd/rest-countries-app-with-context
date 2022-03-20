@@ -5,6 +5,7 @@ import useCountries from "../Providers/CountryContext";
 import Loader from "./Loader";
 import { useState } from "react";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const CardsContainer = () => {
   const { countries, loading, filterByRegion, filterByName } = useCountries();
@@ -19,7 +20,17 @@ const CardsContainer = () => {
   return (
     <>
       <div className="navbar__container">
-        <div className="navbar__search">
+        <motion.div
+          className="navbar__search"
+          initial={{
+            translateX: -2000,
+            opacity: 0,
+          }}
+          animate={{
+            translateX: 0,
+            opacity: 1,
+          }}
+        >
           <input
             className="navbar__search-input"
             type="text"
@@ -33,11 +44,19 @@ const CardsContainer = () => {
             src={SearchIcon}
             alt="search icon"
           />
-        </div>
-        <select
+        </motion.div>
+        <motion.select
           defaultValue={"selected"}
           name="select"
           className="navbar__select"
+          initial={{
+            translateX: 2000,
+            opacity: 0,
+          }}
+          animate={{
+            translateX: 0,
+            opacity: 1,
+          }}
           onChange={e => setCountriesFiltered(filterByRegion(e.target.value))}
         >
           <option disabled value="selected">
@@ -50,7 +69,7 @@ const CardsContainer = () => {
               </option>
             );
           })}
-        </select>
+        </motion.select>
       </div>
       <main className="container">
         {loading === "resolved" ? (
