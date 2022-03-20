@@ -43,7 +43,7 @@ const CountryDetails = () => {
       <AnimatePresence>
         <div className="country__container">
           <motion.img
-            src={singleCountry[0]?.flags?.png}
+            src={singleCountry[0]?.flags?.svg}
             alt={singleCountry[0]?.name?.common + " flag"}
             initial={{
               opacity: 0,
