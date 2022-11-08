@@ -1,32 +1,32 @@
-import CountryCard from "./CountryCard";
-import SearchIcon from "../img/search-outline.svg";
-import { region } from "../helpers/regionValues";
-import useCountries from "../Providers/CountryContext";
-import Loader from "./Loader";
-import { useState } from "react";
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from 'react';
+import CountryCard from './CountryCard';
+import SearchIcon from '../img/search-outline.svg';
+import { region } from '../helpers/regionValues';
+import useCountries from '../Providers/CountryContext';
+import Loader from './Loader';
+import { motion } from 'framer-motion';
 
 const CardsContainer = () => {
   const { countries, loading, filterByRegion, filterByName } = useCountries();
   const [countriesFiltered, setCountriesFiltered] = useState([]);
-  
 
   useEffect(() => {
-    if (countries) {
-      setCountriesFiltered(countries);
-    }
+    if (countries) setCountriesFiltered(countries);
   }, [countries]);
 
-  const handleChange = (e)=>{
-      setCountriesFiltered(filterByName(e.target.value.toLowerCase()))
-  }
+  const handleCountryByName = e => {
+    setCountriesFiltered(filterByName(e.target.value.toLowerCase()));
+  };
+
+  const handleCountryByRegion = e => {
+    setCountriesFiltered(filterByRegion(e.target.value));
+  };
 
   return (
     <>
-      <div className="navbar__container">
+      <div className='navbar__container'>
         <motion.div
-          className="navbar__search"
+          className='navbar__search'
           initial={{
             translateX: -2000,
             opacity: 0,
@@ -37,21 +37,21 @@ const CardsContainer = () => {
           }}
         >
           <input
-            className="navbar__search-input"
-            type="text"
-            placeholder="Search for a country..."
-            onChange={handleChange}
+            className='navbar__search-input'
+            type='text'
+            placeholder='Search for a country...'
+            onChange={handleCountryByName}
           />
           <img
-            className="navbar__search-img"
+            className='navbar__search-img'
             src={SearchIcon}
-            alt="search icon"
+            alt='search icon'
           />
         </motion.div>
         <motion.select
-          defaultValue={"selected"}
-          name="countries region"
-          className="navbar__select"
+          defaultValue={'selected'}
+          name='countries region'
+          className='navbar__select'
           initial={{
             translateX: 2000,
             opacity: 0,
@@ -60,9 +60,9 @@ const CardsContainer = () => {
             translateX: 0,
             opacity: 1,
           }}
-          onChange={e => setCountriesFiltered(filterByRegion(e.target.value))}
+          onChange={handleCountryByRegion}
         >
-          <option disabled value="selected">
+          <option disabled value='selected'>
             Filter by region
           </option>
           {region.map(region => {
@@ -74,8 +74,8 @@ const CardsContainer = () => {
           })}
         </motion.select>
       </div>
-      <main className="container">
-        {loading === "resolved" ? (
+      <main className='container'>
+        {loading === 'resolved' ? (
           countriesFiltered.map((country, index) => {
             return (
               <CountryCard key={country.cca3} country={country} index={index} />
