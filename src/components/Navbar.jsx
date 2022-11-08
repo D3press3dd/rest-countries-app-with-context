@@ -9,7 +9,7 @@ const Navbar = () => {
   const [darkTheme, setDarkTheme] = useState(
     localStorage.getItem("theme") === "dark-theme" ? true : false
   );
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleHome = () => {
     navigate("/");

@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const CountryDetails = () => {
   const [singleCountry, setSingleCountry] = useState([]);
   const { country } = useParams();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const countryLowerCase = country.toLowerCase();
   const { countries, filterDetails } = useCountries();
 

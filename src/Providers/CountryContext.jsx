@@ -4,16 +4,19 @@ import {
   useEffect,
   useContext,
   useCallback,
-} from "react";
+} from 'react';
+import { useDebounce } from '../hooks/useDebounce';
 
 const CountryContext = createContext({});
 
 export const CountriesProvider = ({ children }) => {
   const [countries, setCountries] = useState(null);
-  const [loading, setLoading] = useState("loading");
+  const [loading, setLoading] = useState('loading');
+  const [query, setQuery] = useState('');
+  const debounceQuery = useDebounce(query, 500);
 
   const filterByRegion = region => {
-    if (region === "") {
+    if (region === '') {
       return countries;
     } else {
       if (countries) {
@@ -23,12 +26,11 @@ export const CountriesProvider = ({ children }) => {
   };
 
   const filterByName = name => {
+    setQuery(name);
     if (countries) {
-      const country = countries.filter(country =>
+      return countries.filter(country =>
         country.name.common.toLowerCase().includes(name)
       );
-
-      return country;
     }
   };
 
@@ -43,23 +45,30 @@ export const CountriesProvider = ({ children }) => {
   };
 
   const fetchCountries = async () => {
+    const controller = new AbortController();
+    const signal = controller.signal;
     try {
-      const response = await fetch("https://restcountries.com/v3.1/all");
+      const response = await fetch('https://restcountries.com/v3.1/all', {
+        signal,
+      });
       const data = await response.json();
 
       const sortedByPopulation = data.sort(
         (a, b) => b.population - a.population
       );
       setCountries(sortedByPopulation);
-      setLoading("resolved");
+      setLoading('resolved');
     } catch (err) {
-      setLoading("error");
+      setLoading('error');
       console.log(err);
     }
   };
 
   useEffect(() => {
     fetchCountries();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
