@@ -10,12 +10,17 @@ import { motion } from "framer-motion";
 const CardsContainer = () => {
   const { countries, loading, filterByRegion, filterByName } = useCountries();
   const [countriesFiltered, setCountriesFiltered] = useState([]);
+  
 
   useEffect(() => {
     if (countries) {
       setCountriesFiltered(countries);
     }
   }, [countries]);
+
+  const handleChange = (e)=>{
+      setCountriesFiltered(filterByName(e.target.value.toLowerCase()))
+  }
 
   return (
     <>
@@ -35,9 +40,7 @@ const CardsContainer = () => {
             className="navbar__search-input"
             type="text"
             placeholder="Search for a country..."
-            onChange={e =>
-              setCountriesFiltered(filterByName(e.target.value.toLowerCase()))
-            }
+            onChange={handleChange}
           />
           <img
             className="navbar__search-img"
