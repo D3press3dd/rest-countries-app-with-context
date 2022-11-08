@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
 const CountryCard = ({ country, index }) => {
   const {
     name: { common },

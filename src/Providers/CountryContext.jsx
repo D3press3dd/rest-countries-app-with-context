@@ -26,9 +26,9 @@ export const CountriesProvider = ({ children }) => {
     if (countries) {
       const country = countries.filter(country =>
         country.name.common.toLowerCase().includes(name)
-      );
-
-      return country;
+        );
+        
+        return country;
     }
   };
 
@@ -43,8 +43,10 @@ export const CountriesProvider = ({ children }) => {
   };
 
   const fetchCountries = async () => {
+    const controller = new AbortController()
+    const signal = controller.signal
     try {
-      const response = await fetch("https://restcountries.com/v3.1/all");
+      const response = await fetch("https://restcountries.com/v3.1/all",{signal});
       const data = await response.json();
 
       const sortedByPopulation = data.sort(
@@ -60,6 +62,9 @@ export const CountriesProvider = ({ children }) => {
 
   useEffect(() => {
     fetchCountries();
+    return ()=>{
+      controller.abort()
+    }
   }, []);
 
   return (
